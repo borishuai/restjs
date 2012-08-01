@@ -53,5 +53,29 @@
     dHead.appendChild(dStyle);
   };
   
+   //event bind handler
+   rest.eventUtil = {
+    'addEvent': function(dTarget, sEvent, fHandler) {
+      if (dTarget.addEventListener) {
+        dTarget.addEventListener(sEvent, fHandler, false);
+      } else if (dTarget.attachEvent) {
+        dTarget.attachEvent('on' + sEvent, fHandler);
+      } else {
+        dTarget['on' + sEvent] = fHandler;
+      }
+    },
+    removeEvent: function(dTarget, sEvent, fHandler) {
+      if (dTarget.removeEventListener) {
+        dTarget.addEventListener(sEvent, fHandler, false);
+      } else if (dTarget.attachEvent) {
+        dTarget.detachEvent('on' + sEvent, fHandler);
+      } else {
+        dTarget['on' + sEvent] = null;
+      }
+    }
+  };
+ 
+
+  
   window.rest = rest;
 })(window, document);
