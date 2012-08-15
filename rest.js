@@ -5,6 +5,10 @@
 (function(window, document) {
   var rest = {};
   
+  rest.id = function(sId) {
+    return document.getElementById(sId);
+  };
+  
   //load a javascript file into current file.
   rest.loadScript = function(sURL) {
     var dScript = document.createElement('script');
@@ -74,6 +78,14 @@
       }
     }
   };
+  
+  rest.initLog = function() {
+    if (!window.console) console = {};
+    console.log = console.log || function(){};
+    console.warn = console.warn || function(){};
+    console.error = console.error || function(){};
+    console.info = console.info || function(){};
+  }
  
 
   
