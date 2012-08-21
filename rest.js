@@ -79,6 +79,7 @@
     }
   };
   
+  //main for IE, it can make sure code still work while IE doesn't support console
   rest.initLog = function() {
     if (!window.console) console = {};
     console.log = console.log || function(){};
@@ -86,6 +87,15 @@
     console.error = console.error || function(){};
     console.info = console.info || function(){};
   }
+  
+  //A custom error class.
+  rest.CustomError = function(message) {
+    this.name = 'CustomError';
+    this.message = message || 'Custom Error';
+  };
+  rest.CustomError.prototype = new Error();
+  rest.CustomError.prototype.constructor = rest.CustomError;
+  
  
 
   
